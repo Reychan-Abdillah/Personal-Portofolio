@@ -163,47 +163,92 @@ header {
   filter: blur(50px);
   opacity: 0.7;
   pointer-events: none;
-  transition: transform 0.1s ease-out;
+  transition: transform 0s ease-out;
   mix-blend-mode: screen;
   z-index: -40;
 }
 
 
 
-/* test dulu */
+.stars {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite alternate;
+}
 
-  /* Container galaxy full layar */
-    #galaxy {
-      position:absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(0.5);}
+  50% { opacity: 1; transform: scale(1);}
+  100% { opacity: 0.2; transform: scale(0.5);}
+}
 
-    /* Satu bintang */
-    .star {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 6px rgba(255,255,255,0.5);
-      animation: twinkle 2s infinite ease-in-out, float 10s infinite alternate;
-    }
 
-    /* Animasi berkedip */
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
 
-    /* Animasi floating naik-turun */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0px); }
-    }
+.smoke {
+  position: absolute;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+  border-radius: 50%;   /* oval */
+  pointer-events: none;
+  opacity: 0.6;         /* tipis supaya natural */
+  transform: scale(0);  /* start kecil */
+  filter: blur(7px);    /* halus */
+  animation: smokeAnim 1s forwards; /* panggil keyframes */
+}
+
+@keyframes smokeAnim {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* Tech Strip Animation */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      #tech-strip {
+        animation: scroll 30s linear infinite;
+        white-space: nowrap;
+      }
+
+      #tech-strip:hover {
+        animation-play-state: paused;
+      }
+
+      .tech-item {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 3rem;
+      }

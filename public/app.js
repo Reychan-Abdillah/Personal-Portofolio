@@ -1,4 +1,3 @@
-// ========== LENIS SMOOTH SCROLL ==========
 const lenis = new Lenis({
   duration: 1.2,
   smooth: true,
@@ -12,14 +11,14 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// ========== SEGMENTED CONTROL ==========
+
 const segmented = document.querySelector(".segmented");
 const buttons = document.querySelectorAll(".segmented-button");
 const bgHover = document.querySelector(".bg-hover");
 const bgActive = document.querySelector(".bg-active");
 
 window.addEventListener("load", () => {
-  // === Fungsi pindahkan hover ===
+
   function moveBg(targetBtn) {
     const parentRect = segmented.getBoundingClientRect();
 
@@ -34,7 +33,7 @@ window.addEventListener("load", () => {
     }
   }
 
-  // === Fungsi pindahkan active ===
+ 
   function moveActive(targetBtn) {
     const parentRect = segmented.getBoundingClientRect();
 
@@ -45,11 +44,11 @@ window.addEventListener("load", () => {
     }
   }
 
-  // posisi awal active
+
   const activeBtn = document.querySelector(".segmented-button.active");
   moveActive(activeBtn);
 
-  // Event hover & click
+
   buttons.forEach((btn) => {
     btn.addEventListener("mouseenter", () => moveBg(btn));
     btn.addEventListener("mouseleave", () => moveBg(null));
@@ -58,7 +57,7 @@ window.addEventListener("load", () => {
       btn.classList.add("active");
       moveActive(btn);
 
-      // Scroll ke section terkait
+  
       const targetId = btn.dataset.section;
       const targetSect = document.getElementById(targetId);
       if (targetSect) {
@@ -67,7 +66,7 @@ window.addEventListener("load", () => {
     });
   });
 
-  // ========== BLOBBY EFFECT ==========
+
   const blob = document.getElementById("blob");
   const home = document.getElementById("home");
 
@@ -93,7 +92,7 @@ window.addEventListener("load", () => {
 
   animateBlob();
 
-  // ========== INTERSECTION OBSERVER (update active button saat scroll) ==========
+
   const sections = document.querySelectorAll("section[id]");
   const observer = new IntersectionObserver(
     (entries) => {
@@ -120,39 +119,52 @@ window.addEventListener("load", () => {
 
 
 
-// test dulu 
-const galaxy = document.getElementById('galaxy');
+const starContain = document.getElementById("stars")
+const stars = 200
 
-function createStars() {
-  galaxy.innerHTML = ''; // hapus bintang lama
-  const numStars = 200;  // jumlah partikel bintang
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+for (let i = 1; i < stars; i++) {
+  const stars = document.createElement("div")
+  stars.classList.add("stars")
+  stars.style.top = Math.random() * 100 + "%"
+  stars.style.left = Math.random() * 100 + "%"
 
-  for (let i = 0; i < numStars; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-
-    // posisi acak
-    star.style.top = Math.random() * height + 'px';
-    star.style.left = Math.random() * width + 'px';
-
-    // ukuran acak (1-3px)
-    const size = Math.random() * 2 + 1;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-
-    // delay animasi acak
-    star.style.animationDelay = `${Math.random() * 5}s`;
-
-    galaxy.appendChild(star);
-  }
+  const size = Math.random() * 2 + 1
+  stars.style.width = size + "px"
+  stars.style.height = size + "px"
+  stars.style.animationDelay = Math.random() * 2 + "s"
+  starContain.appendChild(stars)
 }
 
-// buat bintang pertama kali
-createStars();
 
-// responsive: regenerasi bintang saat resize layar
-window.addEventListener('resize', createStars);
 
-console.log(galaxy); 
+const section = document.getElementById("about-section");
+section.addEventListener("mousemove", (e) => {
+  const smoke = document.createElement("div");
+  smoke.classList.add("smoke");
+
+  const size = Math.random() * 40 + 10; // 10px - 25px
+  smoke.style.width = size + "px";
+  smoke.style.height = size + "px";
+
+  smoke.style.left = e.pageX + "px";
+  smoke.style.top = e.pageY + "px";
+
+  document.body.appendChild(smoke);
+
+  // hapus partikel setelah 3 detik
+  setTimeout(() => {
+    smoke.remove();
+  },7000); // 3000ms = 3 detik
+});
+
+
+const strip = document.getElementById("tech-strip")
+let pos = 0 
+let speed = 1
+
+function run() {
+  pos -= speed
+  strip.style.transform = `translate(${pos}px)`
+  requestAnimationFrame(run)
+}
+run()

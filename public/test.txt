@@ -211,3 +211,5 @@ npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 
 
 
+space-x-80
+x-0
