@@ -227,9 +227,6 @@
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
-  .inset-x-0 {
-    inset-inline: calc(var(--spacing) * 0);
-  }
   .-top-3 {
     top: calc(var(--spacing) * -3);
   }
@@ -422,9 +419,6 @@
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
-  .w-\[200px\] {
-    width: 200px;
-  }
   .w-full {
     width: 100%;
   }
@@ -455,18 +449,9 @@
   .flex-shrink-0 {
     flex-shrink: 0;
   }
-  .origin-bottom-left {
-    transform-origin: 0 100%;
-  }
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .scale-100 {
-    --tw-scale-x: 100%;
-    --tw-scale-y: 100%;
-    --tw-scale-z: 100%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .rotate-3 {
     rotate: 3deg;
@@ -532,13 +517,6 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-x-1 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
   .space-x-2 {
@@ -1103,11 +1081,6 @@
       width: calc(var(--spacing) * 80);
     }
   }
-  .md\:w-\[500px\] {
-    @media (width >= 48rem) {
-      width: 500px;
-    }
-  }
   .min-md\:w-\[100\%\] {
     @media (width >= 48rem) {
       width: 100%;
@@ -1158,20 +1131,6 @@
         --tw-space-y-reverse: 0;
         margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
         margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
-      }
-    }
-  }
-  .md\:gap-x-8 {
-    @media (width >= 48rem) {
-      column-gap: calc(var(--spacing) * 8);
-    }
-  }
-  .md\:space-x-2 {
-    @media (width >= 48rem) {
-      :where(& > :not(:last-child)) {
-        --tw-space-x-reverse: 0;
-        margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
-        margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
       }
     }
   }
@@ -1462,7 +1421,7 @@ header {
 .segmented-button {
   position: relative;
   border: none;
-  padding: 0.20rem 0.8rem;
+  padding: 0.2rem 0.8rem;
   border-radius: 9999px;
   color: rgb(255, 255, 255);
   cursor: pointer;
@@ -1509,7 +1468,7 @@ header {
 }
 .smoke {
   position: absolute;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+  background: radial-gradient( ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 80% );
   border-radius: 50%;
   pointer-events: none;
   opacity: 0.6;
@@ -1547,6 +1506,43 @@ header {
   align-items: center;
   margin-right: 3rem;
 }
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#profile {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+@keyframes floatup {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+#profile {
+  animation: floatup ease-in-out 3s infinite;
+}
+#profile:hover {
+  animation-play-state: paused;
+}
+#profile:hover img {
+  transform: scale(1.05);
+}
+#imageProfile {
+  transition: transform 0.3s ease;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
@@ -1561,21 +1557,6 @@ header {
   syntax: "*";
   inherits: false;
   initial-value: 0;
-}
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -1763,6 +1744,21 @@ header {
   syntax: "*";
   inherits: false;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @keyframes pulse {
   50% {
     opacity: 0.5;
@@ -1774,9 +1770,6 @@ header {
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
@@ -1821,6 +1814,9 @@ header {
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
     }
   }
 }

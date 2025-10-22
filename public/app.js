@@ -142,7 +142,7 @@ section.addEventListener("mousemove", (e) => {
   const smoke = document.createElement("div");
   smoke.classList.add("smoke");
 
-  const size = Math.random() * 40 + 10; // 10px - 25px
+  const size = Math.random() * 40 + 10; 
   smoke.style.width = size + "px";
   smoke.style.height = size + "px";
 
@@ -151,10 +151,10 @@ section.addEventListener("mousemove", (e) => {
 
   document.body.appendChild(smoke);
 
-  // hapus partikel setelah 3 detik
+
   setTimeout(() => {
     smoke.remove();
-  },7000); // 3000ms = 3 detik
+  },7000);
 });
 
 
