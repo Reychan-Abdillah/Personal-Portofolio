@@ -32,7 +32,6 @@ window.addEventListener("load", () => {
       bgHover.style.transform = `translate(0px, 0px)`;
     }
   }
-
  
   function moveActive(targetBtn) {
     const parentRect = segmented.getBoundingClientRect();
@@ -66,7 +65,6 @@ window.addEventListener("load", () => {
     });
   });
 
-
   const blob = document.getElementById("blob");
   const home = document.getElementById("home");
 
@@ -89,7 +87,6 @@ window.addEventListener("load", () => {
 
     requestAnimationFrame(animateBlob);
   }
-
   animateBlob();
 
 
@@ -118,7 +115,6 @@ window.addEventListener("load", () => {
 });
 
 
-
 const starContain = document.getElementById("stars")
 const stars = 200
 
@@ -134,8 +130,6 @@ for (let i = 1; i < stars; i++) {
   stars.style.animationDelay = Math.random() * 2 + "s"
   starContain.appendChild(stars)
 }
-
-
 
 const section = document.getElementById("about-section");
 section.addEventListener("mousemove", (e) => {
@@ -157,7 +151,6 @@ section.addEventListener("mousemove", (e) => {
   },7000);
 });
 
-
 const strip = document.getElementById("tech-strip")
 let pos = 0 
 let speed = 1
@@ -168,3 +161,19 @@ function run() {
   requestAnimationFrame(run)
 }
 run()
+
+
+
+
+
+const ts = document.getElementById("type-script")
+function goyang() {
+  ts.classList.add("goyang")
+
+  setTimeout(() => {
+    ts.classList.remove("goyang")
+  },2000)
+}
+
+setInterval(goyang, 3500)
+goyang()
