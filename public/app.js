@@ -207,32 +207,31 @@ closeBtn.addEventListener("click", () => {
   closeBtn.classList.add("hidden");
 });
 
- const form = document.getElementById("contact-form");
-  const statusText = document.getElementById("form-status");
+
+
+const form = document.getElementById("contact-form");
+  const statusMsg = document.getElementById("form-status");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    statusMsg.classList.remove("hidden");
+    statusMsg.textContent = "Sending message...";
 
-    const formData = new FormData(form);
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+      });
 
-    const data = await res.json();
-
-    if (data.success) {
-      statusText.textContent = "✅ Message sent successfully!";
-      statusText.classList.remove("hidden");
-      statusText.classList.add("text-green-400");
-      form.reset();
-    } else {
-      statusText.textContent = "❌ Failed to send message. Try again later.";
-      statusText.classList.remove("hidden");
-      statusText.classList.add("text-red-400");
+      const result = await response.json();
+      if (result.status === "success") {
+        statusMsg.textContent = "Message sent successfully!";
+        form.reset();
+      } else {
+        statusMsg.textContent = "Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      statusMsg.textContent = "Error sending message!";
+      console.error(error);
     }
-
-    setTimeout(() => {
-      statusText.classList.add("hidden");
-    }, 5000);
   });
