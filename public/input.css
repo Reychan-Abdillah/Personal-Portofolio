@@ -211,21 +211,6 @@ header {
   margin-right: 3rem;
 }
 
-/* @keyframes floatUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-#profile {
-  animation: floatUpDown 3s ease-in-out infinite;
-} */
-
 @keyframes floatup {
   0% {
     transform: translateY(0%);
@@ -284,7 +269,7 @@ header {
   84% {
     transform: scale(1) rotate(0deg);
   }
-  /* 90% { transform: rotate(0deg);} */
+
 }
 
 .goyang {
@@ -294,4 +279,9 @@ header {
 
 body {
   background-color: black !important;
+}
+
+::selection {
+  background-color: #00000000; 
+  color: #ffe23e; 
 }
