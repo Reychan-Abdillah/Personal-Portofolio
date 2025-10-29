@@ -838,7 +838,7 @@
             </p>
 
             <a
-              href="mailto:your@email.com"
+              href="reychanlaptop@gmail.com"
               class="inline-block inter-bold border-2 border-white bg-white text-black hover:text-white px-7 py-3 rounded-2xl font-medium hover:bg-transparent transition-all duration-300 w-full text-center md:w-fit"
             >
               Contact Me
@@ -872,63 +872,68 @@
           <div
             class="w-full md:w-1/2 border border-white/30 bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-14 shadow-xl"
           >
-            <form class="flex flex-col gap-8">
-              <div class="flex flex-col">
-                <label for="name" class="text-xl font-header text-gray-300 mb-3"
-                  >Name</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Reychan Abdillah"
-                  class="bg-white/5 border border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 transition-all duration-300"
-                />
-              </div>
+           <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="flex flex-col gap-8">
+  <input type="hidden" name="access_key" value="1269174a-8770-43dc-b0cc-4fe97801c796" />
 
-              <div class="flex flex-col">
-                <label
-                  for="email"
-                  class="text-xl font-header text-gray-300 mb-3"
-                  >E-mail</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="yourmail@theoffice.com"
-                  class="bg-white/5 border font-body border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 transition-all duration-300"
-                />
-              </div>
+  <div class="flex flex-col">
+    <label for="name" class="text-xl font-header text-gray-300 mb-3">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Reychan Abdillah"
+      required
+      class="bg-white/5 border border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 transition-all duration-300"
+    />
+  </div>
 
-              <div class="flex flex-col">
-                <label
-                  for="message"
-                  class="text-xl font-header text-gray-300 mb-3"
-                  >Message</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Tulis pesan kamu di sini..."
-                  class="bg-white/5 border border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 resize-none transition-all duration-300"
-                ></textarea>
-              </div>
+  <div class="flex flex-col">
+    <label for="email" class="text-xl font-header text-gray-300 mb-3">E-mail</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="yourmail@theoffice.com"
+      required
+      class="bg-white/5 border font-body border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 transition-all duration-300"
+    />
+  </div>
 
-              <button
-                type="submit"
-                class="bg-white font-header text-black font-medium py-3 rounded-xl hover:bg-gray-200 transition-all duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+  <div class="flex flex-col">
+    <label for="message" class="text-xl font-header text-gray-300 mb-3">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Describe your project requirements, and let’s make them a reality."
+      required
+      class="bg-white/5 border border-white/20 rounded-xl px-5 py-4 focus:outline-none focus:border-white/50 placeholder-gray-400 resize-none transition-all duration-300"
+    ></textarea>
+  </div>
+
+  <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+
+  <button
+    type="submit"
+    class="bg-white font-header text-black font-medium py-3 rounded-xl hover:bg-transparent hover:text-white border-2 border-white transition-all duration-300"
+  >
+    Send Message
+  </button>
+</form>
+
+
+            <!-- Success/Error Message -->
+            <p
+              id="form-status"
+              class="text-center mt-4 text-gray-300 font-body text-lg hidden"
+            ></p>
           </div>
+
           <div class="w-full md:w-1/2 flex justify-center">
             <img
               src="assets/contact.f235f3a6b3e40f44c7ce.gif"
               alt="contact animation"
-              class="apect-square w-64 md:w-full object-contain"
+              class="aspect-square w-64 md:w-full object-contain"
             />
           </div>
         </div>

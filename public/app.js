@@ -206,3 +206,33 @@ closeBtn.addEventListener("click", () => {
   navBtn.classList.remove("hidden");
   closeBtn.classList.add("hidden");
 });
+
+ const form = document.getElementById("contact-form");
+  const statusText = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      statusText.textContent = "✅ Message sent successfully!";
+      statusText.classList.remove("hidden");
+      statusText.classList.add("text-green-400");
+      form.reset();
+    } else {
+      statusText.textContent = "❌ Failed to send message. Try again later.";
+      statusText.classList.remove("hidden");
+      statusText.classList.add("text-red-400");
+    }
+
+    setTimeout(() => {
+      statusText.classList.add("hidden");
+    }, 5000);
+  });
