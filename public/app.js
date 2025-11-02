@@ -39,11 +39,7 @@ window.addEventListener("load", () => {
       clearInterval(interval);
     }
   }
-  const interval = setInterval(changeText, 30);
-
-
-
-
+  const interval = setInterval(changeText, 20)
 
 
 
