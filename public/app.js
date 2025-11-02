@@ -11,12 +11,47 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-const segmented = document.querySelector(".segmented");
-const buttons = document.querySelectorAll(".segmented-button");
-const bgHover = document.querySelector(".bg-hover");
-const bgActive = document.querySelector(".bg-active");
-
 window.addEventListener("load", () => {
+  const target = document.getElementById("textDescription");
+  const char = "01010101##+_+!@????????????AbQDYFGXXxxXXww<><>!!!!!!][";
+  const originalText = target.textContent.trim();
+
+  function randomText() {
+    return char[Math.floor(Math.random() * char.length)];
+  }
+
+  let index = 0;
+  function changeText() {
+    const scrambled = originalText
+      .split("")
+      .map((v, i) => {
+        if (i < index || v === " " || v === "\n") {
+          return v;
+        }
+        return randomText();
+      })
+      .join("");
+
+    target.textContent = scrambled;
+    index++;
+
+    if (index > originalText.length) {
+      clearInterval(interval);
+    }
+  }
+  const interval = setInterval(changeText, 30);
+
+
+
+
+
+
+
+  const segmented = document.querySelector(".segmented");
+  const buttons = document.querySelectorAll(".segmented-button");
+  const bgHover = document.querySelector(".bg-hover");
+  const bgActive = document.querySelector(".bg-active");
+
   function moveBg(targetBtn) {
     if (!segmented || !bgHover) return;
     const parentRect = segmented.getBoundingClientRect();
@@ -24,7 +59,9 @@ window.addEventListener("load", () => {
       const rect = targetBtn.getBoundingClientRect();
       const extra = 8;
       bgHover.style.width = rect.width + extra + "px";
-      bgHover.style.transform = `translate(${rect.left - parentRect.left - extra / 2}px)`;
+      bgHover.style.transform = `translate(${
+        rect.left - parentRect.left - extra / 2
+      }px)`;
     } else {
       bgHover.style.width = segmented.offsetWidth + "px";
       bgHover.style.transform = "translate(0px, 0px)";
@@ -46,7 +83,9 @@ window.addEventListener("load", () => {
       const id = section.id;
       const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > 0;
       if (inView) {
-        const activeBtn = Array.from(buttons).find((btn) => btn.dataset.section === id);
+        const activeBtn = Array.from(buttons).find(
+          (btn) => btn.dataset.section === id
+        );
         if (activeBtn) {
           buttons.forEach((b) => b.classList.remove("active"));
           activeBtn.classList.add("active");
@@ -106,9 +145,13 @@ window.addEventListener("load", () => {
       scrollSections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const id = section.id;
-        const inView = rect.top < window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.15;
+        const inView =
+          rect.top < window.innerHeight * 0.4 &&
+          rect.bottom > window.innerHeight * 0.15;
         if (inView) {
-          const activeBtn = Array.from(buttons).find((btn) => btn.dataset.section === id);
+          const activeBtn = Array.from(buttons).find(
+            (btn) => btn.dataset.section === id
+          );
           if (activeBtn) {
             buttons.forEach((btn) => btn.classList.remove("active"));
             activeBtn.classList.add("active");
@@ -136,7 +179,9 @@ if (starContain) {
   }
 }
 
-const smokeSections = document.querySelectorAll("#about-section, #tech-items, #home, #projects");
+const smokeSections = document.querySelectorAll(
+  "#about-section, #tech-items, #home, #projects"
+);
 if (smokeSections.length > 0) {
   let lastSmoke = 0;
   const SMOKE_COOLDOWN = 50;
@@ -189,11 +234,9 @@ if (ts) {
   goyang();
 }
 
-
-const navBtn = document.getElementById("nav-btn")
-const closeBtn = document.getElementById("close-btn")
-const navMenu = document.getElementById("nav-menu")
-
+const navBtn = document.getElementById("nav-btn");
+const closeBtn = document.getElementById("close-btn");
+const navMenu = document.getElementById("nav-menu");
 
 navBtn.addEventListener("click", () => {
   navMenu.classList.toggle("translate-x-full");
@@ -207,31 +250,29 @@ closeBtn.addEventListener("click", () => {
   closeBtn.classList.add("hidden");
 });
 
-
-
 const form = document.getElementById("contact-form");
-  const statusMsg = document.getElementById("form-status");
+const statusMsg = document.getElementById("form-status");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusMsg.classList.remove("hidden");
-    statusMsg.textContent = "Sending message...";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusMsg.classList.remove("hidden");
+  statusMsg.textContent = "Sending message...";
 
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-      });
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+    });
 
-      const result = await response.json();
-      if (result.status === "success") {
-        statusMsg.textContent = "Message sent successfully!";
-        form.reset();
-      } else {
-        statusMsg.textContent = "Something went wrong. Please try again.";
-      }
-    } catch (error) {
-      statusMsg.textContent = "Error sending message!";
-      console.error(error);
+    const result = await response.json();
+    if (result.status === "success") {
+      statusMsg.textContent = "Message sent successfully!";
+      form.reset();
+    } else {
+      statusMsg.textContent = "Something went wrong. Please try again.";
     }
-  });
+  } catch (error) {
+    statusMsg.textContent = "Error sending message!";
+    console.error(error);
+  }
+});
