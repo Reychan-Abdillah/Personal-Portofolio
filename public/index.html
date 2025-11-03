@@ -33,14 +33,14 @@
   </head>
 
   <body class="bg-dark font-body bg-blue-500 relative loading">
-    <!-- <div
+    <div
       id="loading-screen" class="w-full h-screen bg-white z-[999] fixed inset-0 flex justify-center items-center"
     >
       <p id="text-load" class=" text-3xl  md:text-6xl font-header text-black">
         Welcome &lt;/&gt;
       </p>
-    </div> -->
-    <main id="stars" class="opacity-100">
+    </div> 
+    <main id="stars" class="">
       <button
         id="nav-btn"
         class="md:hidden fixed top-5 right-5 z-50 rounded-xl font-header border border-white text-xs text-white p-1 hover:bg-gray-200 hover:text-black transition"
@@ -131,7 +131,7 @@
         <div class="flex"></div>
       </nav>
 
-      <section id="home" class="w-full h-[100vh] relative">
+      <section id="home" class="transition-opacity duration-3000 ease-out opacity-0 w-full h-[100vh] relative">
         <header class="flex items-center justify-between py-5 px-10">
           <h1 class="zen-dots-regular text-white text-xl md:text-2xl">
             Portfolio
@@ -189,9 +189,9 @@
               👋Hi There I'm
             </p>
             <div  class="md:py-2 relative inline-block text-4xl lg:text-7xl">
-              <h1 id="name" class="flex zen-dots-regular text-white relative">REYHAN</h1>
+              <h1 id="name" class="z-20 flex zen-dots-regular text-white relative">REYHAN</h1>
               <h1 id="span-name"
-                class="zen-dots-regular text-transparent stroke-white absolute top-1 -left-1 md:bottom-0.5 md:-left-1.5"
+                class="flex -z-10 zen-dots-regular text-transparent stroke-white absolute  top-1 -left-1 md:bottom-0.5 md:-left-1.5"
                 style="-webkit-text-stroke: 1px white"
               >
                 REYHAN

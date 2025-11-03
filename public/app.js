@@ -1,3 +1,4 @@
+  const home = document.getElementById("home");
 const lenis = new Lenis({
   duration: 1.2,
   smooth: true,
@@ -12,6 +13,44 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 window.addEventListener("load", () => {
+  const loadingScreen = document.getElementById("loading-screen");
+  const textLoad = document.getElementById("text-load");
+  const letter = textLoad.textContent.split("");
+  textLoad.textContent = "";
+
+  letter.forEach((char) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.classList.add("opacity-0", "inline-block");
+    textLoad.appendChild(span);
+  });
+
+  const spans = textLoad.querySelectorAll("span");
+
+  spans.forEach((char, i) => {
+    setTimeout(() => {
+      char.classList.add("animate-in");
+    }, i * 80);
+  });
+
+  setTimeout(() => {
+    spans.forEach((char, i) => {
+      setTimeout(() => {
+        const reverse = spans.length - 1 - i;
+        spans[reverse].classList.remove("animate-in");
+        spans[reverse].classList.add("animate-out");
+      }, i * 80);
+    });
+  }, 2000);
+
+  setTimeout(() => {
+    loadingScreen.style.transition = "transform 0.8s ease-in-out";
+    loadingScreen.style.transform = "translateY(-100%)";
+
+    starContain.classList.remove("opacity-0");
+    starContain.classList.add("opacity-100");
+    document.body.classList.remove("loading");
+  }, 4000);
 
   setTimeout(() => {
     const target = document.getElementById("textDescription");
@@ -44,29 +83,30 @@ window.addEventListener("load", () => {
     const interval = setInterval(changeText, 20); //end
 
     const name = document.getElementById("name");
+    const spanName = document.getElementById("span-name");
+
     const splitName = name.textContent.split("");
     name.textContent = "";
+    spanName.textContent = "";
 
+    
+    
     splitName.forEach((char, i) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.animationDelay = `${i * 0.2}s`;
-      span.classList.add("visible");
-      name.appendChild(span);
-    });
+      const span1 = document.createElement("span");
+      const span2 = document.createElement("span");
+      home.classList.add("opacity-100")
+      span1.textContent = char;
+      span1.style.animationDelay = `${i * 0.2}s`;
+      span1.classList.add("visible");
 
-    const spanName = document.getElementById("span-name")
-    const splitSpan = spanName.textContent.split("")
-    spanName.textContent = ""
+      span2.textContent = char;
+      span2.style.animationDelay = `${i * 0.2}s`;
+      span2.classList.add("visible-out");
 
-     splitSpan.forEach((char, i) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.animationDelay = `${i * 0.2}s`;
-      span.classList.add("visible-out");
-      spanName.appendChild(span);
+      name.appendChild(span1);
+      spanName.appendChild(span2);
     });
-  }, 1);
+  }, 4500);
 
   const segmented = document.querySelector(".segmented");
   const buttons = document.querySelectorAll(".segmented-button");
@@ -130,7 +170,7 @@ window.addEventListener("load", () => {
   });
 
   const blob = document.getElementById("blob");
-  const home = document.getElementById("home");
+
 
   if (blob && home) {
     let x = 0,
