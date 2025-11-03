@@ -168,7 +168,7 @@ window.addEventListener("load", () => {
       if (targetSect) lenis.scrollTo(targetSect, { offset: 0 });
     });
   });
-
+// test
   const blob = document.getElementById("blob");
 
 
