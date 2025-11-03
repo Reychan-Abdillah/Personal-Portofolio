@@ -12,6 +12,39 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 window.addEventListener("load", () => {
+
+  const textLoad = document.getElementById("text-load")
+  const letter = textLoad.textContent.split("")
+  textLoad.textContent = ""
+
+  letter.forEach((char) => {
+    const span = document.createElement("span")
+    span.textContent = char
+    span.classList.add("opacity-0","inline-block")
+    textLoad.appendChild(span)
+  })
+
+  const spans = textLoad.querySelectorAll("span")
+  
+  spans.forEach((char, i) => {
+      setTimeout(() => {
+        char.classList.add("animate-in")
+      }, i * 80)
+  })
+
+  setTimeout(() => {
+    spans.forEach((char, i) => {
+      setTimeout(() => {
+        const reverse = spans.length -1 -i
+        spans[reverse].classList.remove("animate-in")
+        spans[reverse].classList.add("animate-out")
+      }, i * 80)
+    })
+  }, 2000)
+
+  
+
+
   const target = document.getElementById("textDescription");
   const char = "01010101##+_+!@????????????AbQDYFGXXxxXXww<><>!!!!!!][";
   const originalText = target.textContent.trim();
