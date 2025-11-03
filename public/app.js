@@ -13,68 +13,60 @@ requestAnimationFrame(raf);
 
 window.addEventListener("load", () => {
 
-  const textLoad = document.getElementById("text-load")
-  const letter = textLoad.textContent.split("")
-  textLoad.textContent = ""
-
-  letter.forEach((char) => {
-    const span = document.createElement("span")
-    span.textContent = char
-    span.classList.add("opacity-0","inline-block")
-    textLoad.appendChild(span)
-  })
-
-  const spans = textLoad.querySelectorAll("span")
-  
-  spans.forEach((char, i) => {
-      setTimeout(() => {
-        char.classList.add("animate-in")
-      }, i * 80)
-  })
-
   setTimeout(() => {
-    spans.forEach((char, i) => {
-      setTimeout(() => {
-        const reverse = spans.length -1 -i
-        spans[reverse].classList.remove("animate-in")
-        spans[reverse].classList.add("animate-out")
-      }, i * 80)
-    })
-  }, 2000)
+    const target = document.getElementById("textDescription");
+    const char = "01010101##+_+!@????????????AbQDYFGXXxxXXww<><>!!!!!!][";
+    const originalText = target.textContent.trim();
 
-  
-
-
-  const target = document.getElementById("textDescription");
-  const char = "01010101##+_+!@????????????AbQDYFGXXxxXXww<><>!!!!!!][";
-  const originalText = target.textContent.trim();
-
-  function randomText() {
-    return char[Math.floor(Math.random() * char.length)];
-  }
-
-  let index = 0;
-  function changeText() {
-    const scrambled = originalText
-      .split("")
-      .map((v, i) => {
-        if (i < index || v === " " || v === "\n") {
-          return v;
-        }
-        return randomText();
-      })
-      .join("");
-
-    target.textContent = scrambled;
-    index++;
-
-    if (index > originalText.length) {
-      clearInterval(interval);
+    function randomText() {
+      return char[Math.floor(Math.random() * char.length)];
     }
-  }
-  const interval = setInterval(changeText, 20)
 
+    let index = 0;
+    function changeText() {
+      const scrambled = originalText
+        .split("")
+        .map((v, i) => {
+          if (i < index || v === " " || v === "\n") {
+            return v;
+          }
+          return randomText();
+        })
+        .join("");
 
+      target.textContent = scrambled;
+      index++;
+
+      if (index > originalText.length) {
+        clearInterval(interval);
+      }
+    }
+    const interval = setInterval(changeText, 20); //end
+
+    const name = document.getElementById("name");
+    const splitName = name.textContent.split("");
+    name.textContent = "";
+
+    splitName.forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.2}s`;
+      span.classList.add("visible");
+      name.appendChild(span);
+    });
+
+    const spanName = document.getElementById("span-name")
+    const splitSpan = spanName.textContent.split("")
+    spanName.textContent = ""
+
+     splitSpan.forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.2}s`;
+      span.classList.add("visible-out");
+      spanName.appendChild(span);
+    });
+  }, 1);
 
   const segmented = document.querySelector(".segmented");
   const buttons = document.querySelectorAll(".segmented-button");

@@ -32,15 +32,15 @@
     <link href="output.css" rel="stylesheet" />
   </head>
 
-  <body class="bg-dark font-body bg-blue-500 relative">
-    <div
-      class="w-full h-screen bg-white z-[999] fixed inset-0 flex justify-center items-center"
+  <body class="bg-dark font-body bg-blue-500 relative loading">
+    <!-- <div
+      id="loading-screen" class="w-full h-screen bg-white z-[999] fixed inset-0 flex justify-center items-center"
     >
-      <p id="text-load" class="text-6xl font-header text-black">
+      <p id="text-load" class=" text-3xl  md:text-6xl font-header text-black">
         Welcome &lt;/&gt;
       </p>
-    </div>
-    <main id="stars">
+    </div> -->
+    <main id="stars" class="opacity-100">
       <button
         id="nav-btn"
         class="md:hidden fixed top-5 right-5 z-50 rounded-xl font-header border border-white text-xs text-white p-1 hover:bg-gray-200 hover:text-black transition"
@@ -188,9 +188,9 @@
             <p class="inter-semibold text-lg md:text-xl text-gray-200">
               👋Hi There I'm
             </p>
-            <div class="md:py-2 relative inline-block text-4xl lg:text-7xl">
-              <h1 class="zen-dots-regular text-white relative">REYHAN</h1>
-              <h1
+            <div  class="md:py-2 relative inline-block text-4xl lg:text-7xl">
+              <h1 id="name" class="flex zen-dots-regular text-white relative">REYHAN</h1>
+              <h1 id="span-name"
                 class="zen-dots-regular text-transparent stroke-white absolute top-1 -left-1 md:bottom-0.5 md:-left-1.5"
                 style="-webkit-text-stroke: 1px white"
               >
@@ -203,7 +203,7 @@
               <div class="border border-gray-400 w-0.5 mt-4 h-10"></div>
               <p
                 id="textDescription"
-                class="text-white text-sm font-body leading-relaxed"
+                class="text-white flex text-sm font-body leading-relaxed"
               >
                 A passionate web developer creating modern, responsive websites.
                 I enjoy turning ideas into interactive projects and learning new

@@ -332,3 +332,37 @@ body {
       .slide-up {
         animation: slideUp 1s ease-in forwards;
       }
+
+      /* body.loading {
+  overflow: hidden;
+  height: 100vh; 
+} */
+
+
+
+
+span.visible {
+  opacity: 0;
+  transform: translateY(-15px);
+  animation: fadeInUp 1500ms forwards;
+}
+
+span.visible-out {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInDown 1500ms forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
