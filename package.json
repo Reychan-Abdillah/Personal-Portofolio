@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx @tailwindcss/cli -i ./public/input.css -o ./public/output.css --watch",
-    "build": "echo 'No build step needed",
+    "build": "echo \"No build step needed\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
