@@ -1,4 +1,4 @@
-  const home = document.getElementById("home");
+const home = document.getElementById("home");
 const lenis = new Lenis({
   duration: 1.2,
   smooth: true,
@@ -13,44 +13,45 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 window.addEventListener("load", () => {
-  const loadingScreen = document.getElementById("loading-screen");
-  const textLoad = document.getElementById("text-load");
-  const letter = textLoad.textContent.split("");
-  textLoad.textContent = "";
+  // ini penting bagian 2
+  // const loadingScreen = document.getElementById("loading-screen");
+  // const textLoad = document.getElementById("text-load");
+  // const letter = textLoad.textContent.split("");
+  // textLoad.textContent = "";
 
-  letter.forEach((char) => {
-    const span = document.createElement("span");
-    span.textContent = char;
-    span.classList.add("opacity-0", "inline-block");
-    textLoad.appendChild(span);
-  });
+  // letter.forEach((char) => {
+  //   const span = document.createElement("span");
+  //   span.textContent = char;
+  //   span.classList.add("opacity-0", "inline-block");
+  //   textLoad.appendChild(span);
+  // });
 
-  const spans = textLoad.querySelectorAll("span");
+  // const spans = textLoad.querySelectorAll("span");
 
-  spans.forEach((char, i) => {
-    setTimeout(() => {
-      char.classList.add("animate-in");
-    }, i * 80);
-  });
+  // spans.forEach((char, i) => {
+  //   setTimeout(() => {
+  //     char.classList.add("animate-in");
+  //   }, i * 80);
+  // });
 
-  setTimeout(() => {
-    spans.forEach((char, i) => {
-      setTimeout(() => {
-        const reverse = spans.length - 1 - i;
-        spans[reverse].classList.remove("animate-in");
-        spans[reverse].classList.add("animate-out");
-      }, i * 80);
-    });
-  }, 2000);
+  // setTimeout(() => {
+  //   spans.forEach((char, i) => {
+  //     setTimeout(() => {
+  //       const reverse = spans.length - 1 - i;
+  //       spans[reverse].classList.remove("animate-in");
+  //       spans[reverse].classList.add("animate-out");
+  //     }, i * 80);
+  //   });
+  // }, 2000);
 
-  setTimeout(() => {
-    loadingScreen.style.transition = "transform 0.8s ease-in-out";
-    loadingScreen.style.transform = "translateY(-100%)";
+  // setTimeout(() => {
+  //   loadingScreen.style.transition = "transform 0.8s ease-in-out";
+  //   loadingScreen.style.transform = "translateY(-100%)";
 
-    starContain.classList.remove("opacity-0");
-    starContain.classList.add("opacity-100");
-    document.body.classList.remove("loading");
-  }, 4000);
+  //   starContain.classList.remove("opacity-0");
+  //   starContain.classList.add("opacity-100");
+  //   document.body.classList.remove("loading");
+  // }, 4000);
 
   setTimeout(() => {
     const target = document.getElementById("textDescription");
@@ -89,12 +90,10 @@ window.addEventListener("load", () => {
     name.textContent = "";
     spanName.textContent = "";
 
-    
-    
     splitName.forEach((char, i) => {
       const span1 = document.createElement("span");
       const span2 = document.createElement("span");
-      home.classList.add("opacity-100")
+      home.classList.add("opacity-100");
       span1.textContent = char;
       span1.style.animationDelay = `${i * 0.2}s`;
       span1.classList.add("visible");
@@ -106,7 +105,42 @@ window.addEventListener("load", () => {
       name.appendChild(span1);
       spanName.appendChild(span2);
     });
-  }, 4500);
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add("show");
+      }, i * 200);
+    });
+
+    const fadeLeft = document.querySelectorAll("#icons ion-icon");
+    setTimeout(() => {
+      fadeLeft.forEach((e, i) => {
+        setTimeout(() => {
+          e.classList.add("show");
+        }, i * 200);
+      });
+
+      const fadeDown = document.querySelectorAll(".fade-down");
+      fadeDown.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add("show");
+        }, i * 150);
+      });
+    }, 100);
+
+    const btn = document.querySelector(".btn-pop");
+
+    btn.classList.remove("hidden");
+    setTimeout(() => {
+      btn.classList.add("show");
+    }, 200);
+
+
+    const imgBnks = document.getElementById("img-bungkus")
+
+    imgBnks.classList.remove("-translate-y-20", "rotate-12")
+  }, 500);
 
   const segmented = document.querySelector(".segmented");
   const buttons = document.querySelectorAll(".segmented-button");
@@ -168,9 +202,8 @@ window.addEventListener("load", () => {
       if (targetSect) lenis.scrollTo(targetSect, { offset: 0 });
     });
   });
-// test
+  // test
   const blob = document.getElementById("blob");
-
 
   if (blob && home) {
     let x = 0,
@@ -255,7 +288,6 @@ if (smokeSections.length > 0) {
 
       const smoke = document.createElement("div");
       smoke.classList.add("smoke");
-
       const size = Math.random() * 40 + 10;
       smoke.style.width = size + "px";
       smoke.style.height = size + "px";

@@ -42,7 +42,6 @@
   font-style: normal;
 }
 
-
 .lexend-ya {
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
@@ -77,7 +76,6 @@ section {
   z-index: -10;
   pointer-events: none;
 }
-
 
 header {
   position: relative;
@@ -136,7 +134,6 @@ header {
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-
 .stars {
   position: fixed;
   width: 1px;
@@ -187,8 +184,6 @@ header {
     opacity: 0;
   }
 }
-
-
 
 @keyframes scroll {
   0% {
@@ -269,74 +264,69 @@ header {
   84% {
     transform: scale(1) rotate(0deg);
   }
-
 }
 
 .goyang {
   animation: goyangZoom 2s ease-in-out infinite;
 }
 
-
 body {
   background-color: black !important;
 }
 
 ::selection {
-  background-color: #00000000; 
-  color: #ffe23e; 
+  background-color: #00000000;
+  color: #ffe23e;
 }
 
+@keyframes in {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-  
-      @keyframes in {
-        from {
-          transform: translateY(2rem);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
+@keyframes out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+}
 
-   
-      @keyframes out {
-        from {
-          transform: translateY(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateY(-2rem);
-          opacity: 0;
-        }
-      }
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
 
-    
-      @keyframes slideUp {
-        from {
-          transform: translateY(0);
-        }
-        to {
-          transform: translateY(-100%);
-        }
-      }
+.animate-in {
+  animation: in 0.6s ease-out forwards;
+}
 
-      .animate-in {
-        animation: in 0.6s ease-out forwards;
-      }
+.animate-out {
+  animation: out 0.6s ease-in forwards;
+}
 
-      .animate-out {
-        animation: out 0.6s ease-in forwards;
-      }
+.slide-up {
+  animation: slideUp 1s ease-in forwards;
+}
 
-      .slide-up {
-        animation: slideUp 1s ease-in forwards;
-      }
-
-      body.loading {
+/* INI BAGIAN PENTING  */
+/* body.loading {
   overflow: hidden;
-  height: 100vh; 
-}
+  height: 100vh;
+} */
 
 span.visible {
   opacity: 0;
@@ -346,12 +336,12 @@ span.visible {
 
 span.visible-out {
   opacity: 0;
-  transform: translateY(10px); 
+  transform: translateY(10px);
   animation: fadeInUpOutline 1s forwards ease-out;
 }
 
 @keyframes fadeInUp {
- 0% {
+  0% {
     opacity: 0;
     transform: translateY(-20px);
   }
@@ -380,3 +370,78 @@ span.visible-out {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 2s ease, transform 2.5s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+.fade-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-down {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease, transform 2.5s ease;
+}
+.fade-down.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes grow-width {
+  from {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes text-slide-left {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.btn-pop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  opacity: 0;
+
+  overflow: hidden;
+}
+
+.btn-pop.show {
+  animation: grow-width 0.7s forwards ease-out;
+}
+
+/* Teks awal */
+.btn-pop span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.btn-pop.show span {
+  animation: text-slide-left 0.7s forwards ease-out;
+  animation-delay: 0.6s;
+}

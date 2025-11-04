@@ -55,7 +55,6 @@
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
-    --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -488,8 +487,15 @@
     --tw-translate-x: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .-translate-y-20 {
+    --tw-translate-y: calc(var(--spacing) * -20);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .rotate-3 {
     rotate: 3deg;
+  }
+  .rotate-12 {
+    rotate: 12deg;
   }
   .-skew-x-12 {
     --tw-skew-x: skewX(calc(12deg * -1));
@@ -1805,10 +1811,6 @@ body {
 .slide-up {
   animation: slideUp 1s ease-in forwards;
 }
-body.loading {
-  overflow: hidden;
-  height: 100vh;
-}
 span.visible {
   opacity: 0;
   transform: translateY(-10px);
@@ -1846,6 +1848,71 @@ span.visible-out {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 2s ease, transform 2.5s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+.fade-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-down {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease, transform 2.5s ease;
+}
+.fade-down.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes grow-width {
+  from {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes text-slide-left {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.btn-pop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  opacity: 0;
+  overflow: hidden;
+}
+.btn-pop.show {
+  animation: grow-width 0.7s forwards ease-out;
+}
+.btn-pop span {
+  display: inline-block;
+  opacity: 0;
+}
+.btn-pop.show span {
+  animation: text-slide-left 0.7s forwards ease-out;
+  animation-delay: 0.6s;
 }
 @property --tw-translate-x {
   syntax: "*";

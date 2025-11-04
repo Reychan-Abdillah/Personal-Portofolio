@@ -33,13 +33,14 @@
   </head>
 
   <body class="bg-dark font-body bg-blue-500 relative loading">
-    <div
+    <!-- ini penting bagian 3 -->
+    <!-- <div
       id="loading-screen" class="w-full h-screen bg-white z-[999] fixed inset-0 flex justify-center items-center"
     >
       <p id="text-load" class=" text-3xl  md:text-6xl font-header text-black">
         Welcome &lt;/&gt;
       </p>
-    </div> 
+    </div>  -->
     <main id="stars" class="">
       <button
         id="nav-btn"
@@ -138,9 +139,9 @@
           </h1>
 
           <button
-            class="hidden md:flex rounded-3xl font-headerv1 bg-white/10 border border-white/15 backdrop-blur-md text-white p-2 hover:bg-gray-200 hover:text-black transition text-sm"
+            class="btn-pop hidden md:flex rounded-3xl font-headerv1 bg-white/10 border border-white/15 backdrop-blur-md text-white p-2 hover:bg-gray-200 hover:text-black transition text-sm"
           >
-            Download CV
+            <span>Download CV</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -161,23 +162,23 @@
         <div
           class="flex flex-col md:flex-row md:mt-32 h-full mt-10 px-8 md:px-16 lg:px-36 space-y-5 lg:space-x-80"
         >
-          <div
+          <div id="icons"
             class="hidden absolute lg:flex flex-col left-20 top-80 space-y-5 text-white"
           >
             <ion-icon
-              class="rounded-full w-5 h-5 p-2 bg-white/5"
+              class="fade-left rounded-full w-5 h-5 p-2 bg-white/5"
               name="logo-tiktok"
             ></ion-icon>
             <ion-icon
-              class="rounded-full w-5 h-5 p-2 bg-white/5"
+              class="fade-left rounded-full w-5 h-5 p-2 bg-white/5"
               name="logo-whatsapp"
             ></ion-icon>
             <ion-icon
-              class="rounded-full w-5 h-5 p-2 bg-white/5"
+              class="fade-left rounded-full w-5 h-5 p-2 bg-white/5"
               name="logo-instagram"
             ></ion-icon>
             <ion-icon
-              class="rounded-full w-5 h-5 p-2 bg-white/5"
+              class="fade-left rounded-full w-5 h-5 p-2 bg-white/5"
               name="logo-github"
             ></ion-icon>
           </div>
@@ -185,7 +186,7 @@
           <div
             class="order-2 md:order-1 flex flex-col max-w-96 mt-10 md:max-w-96"
           >
-            <p class="inter-semibold text-lg md:text-xl text-gray-200">
+            <p class="fade-in inter-semibold text-lg md:text-xl text-gray-200">
               👋Hi There I'm
             </p>
             <div  class="md:py-2 relative inline-block text-4xl lg:text-7xl">
@@ -212,7 +213,7 @@
             </div>
 
             <button
-              class="flex mt-4 items-center rounded-xl self-start font-header border border-white backdrop-blur-md text-md text-white px-4 py-2 hover:bg-white hover:text-black transition"
+              class="fade-down flex mt-4 items-center rounded-xl self-start font-header border border-white backdrop-blur-md text-md text-white px-4 py-2 hover:bg-white hover:text-black transition"
             >
               Let's Start
               <svg
@@ -234,7 +235,7 @@
           <div
             class="order-1 md:order-2 group relative w-full max-w-[250px] min-md:w-[100%] md:max-w-[300px] mx-auto rounded-2xl p-[6px] flex justify-center"
           >
-            <div class="relative rounded-2xl">
+            <div id="img-bungkus" class="relative rounded-2xl transform  -translate-y-20 rotate-12">
               <div class="relative rounded-2xl">
                 <div id="profile">
                   <div class="overflow-hidden rounded-2xl">
