@@ -125,22 +125,23 @@ window.addEventListener("load", () => {
       fadeDown.forEach((el, i) => {
         setTimeout(() => {
           el.classList.add("show");
-        }, i * 150);
+        }, i * 200);
       });
-    }, 100);
+    }, 400);
 
     const btn = document.querySelector(".btn-pop");
 
     btn.classList.remove("hidden");
-    setTimeout(() => {
       btn.classList.add("show");
-    }, 200);
+
 
 
     const imgBnks = document.getElementById("img-bungkus")
 
     imgBnks.classList.remove("-translate-y-20", "rotate-12")
   }, 500);
+
+  
 
   const segmented = document.querySelector(".segmented");
   const buttons = document.querySelectorAll(".segmented-button");
