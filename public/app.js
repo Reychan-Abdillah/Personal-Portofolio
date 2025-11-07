@@ -143,7 +143,7 @@ setTimeout(() => {
   const imgBnks = document.getElementById("img-bungkus");
 
   imgBnks.classList.remove("-translate-y-20", "rotate-12");
-}, 4500);
+}, 4700);
 
 const targetLayer = document.querySelectorAll(
   ".fade-in2, .fade-down2, .fade-opacity2, .fade-opacity3, .bar"
@@ -263,36 +263,6 @@ buttons.forEach((btn) => {
   });
 });
 // test
-const blob = document.getElementById("blob");
-
-if (blob && home) {
-  let x = 0,
-    y = 0,
-    targetX = 0,
-    targetY = 0,
-    timeout;
-
-  home.addEventListener("pointermove", (e) => {
-    const rect = home.getBoundingClientRect();
-    targetX = e.clientX - rect.left;
-    targetY = e.clientY - rect.top;
-    blob.style.opacity = 1;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      blob.style.opacity = 0;
-    }, 500);
-  });
-
-  function animateBlob() {
-    x += (targetX - x) * 0.1;
-    y += (targetY - y) * 0.1;
-    blob.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateBlob);
-  }
-
-  animateBlob();
-}
-
 const scrollSections = document.querySelectorAll("section[id]");
 if (lenis && scrollSections.length > 0 && buttons.length > 0) {
   lenis.on("scroll", () => {
@@ -332,35 +302,6 @@ if (starContain) {
   }
 }
 
-const smokeSections = document.querySelectorAll(
-  "#about-section, #tech-items, #home, #projects"
-);
-if (smokeSections.length > 0) {
-  let lastSmoke = 0;
-  const SMOKE_COOLDOWN = 50;
-
-  smokeSections.forEach((section) => {
-    section.addEventListener("mousemove", (e) => {
-      const now = Date.now();
-      if (now - lastSmoke < SMOKE_COOLDOWN) return;
-      lastSmoke = now;
-
-      const smoke = document.createElement("div");
-      smoke.classList.add("smoke");
-      const size = Math.random() * 40 + 10;
-      smoke.style.width = size + "px";
-      smoke.style.height = size + "px";
-      smoke.style.left = e.clientX + "px";
-      smoke.style.top = e.clientY + "px";
-
-      document.body.appendChild(smoke);
-
-      setTimeout(() => {
-        if (smoke.parentNode) smoke.remove();
-      }, 7000);
-    });
-  });
-}
 
 const strip = document.getElementById("tech-strip");
 if (strip) {
