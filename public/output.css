@@ -219,9 +219,6 @@
   .pointer-events-none {
     pointer-events: none;
   }
-  .visible {
-    visibility: visible;
-  }
   .absolute {
     position: absolute;
   }
@@ -1575,17 +1572,6 @@
 .bg-dark {
   background-color: #0f0e0e;
 }
-@layer base {
-  * {
-    transition-property: all;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
-    --tw-ease: var(--ease-in-out);
-    transition-timing-function: var(--ease-in-out);
-  }
-}
 section {
   position: relative;
   overflow: visible;
@@ -1820,14 +1806,14 @@ body {
 .slide-up {
   animation: slideUp 1s ease-in forwards;
 }
-span.visible {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeInUp 0.8s forwards ease-out;
+body.loading {
+  overflow: hidden;
+  height: 100vh;
 }
-span.visible-out {
-  opacity: 0;
-  transform: translateY(10px);
+.visible1 {
+  animation: fadeInUp 1s forwards ease-out;
+}
+.visible-out {
   animation: fadeInUpOutline 1s forwards ease-out;
 }
 @keyframes fadeInUp {
@@ -1836,7 +1822,7 @@ span.visible-out {
     transform: translateY(-20px);
   }
   60% {
-    opacity: 1;
+    opacity: 0.3;
     transform: translateY(5px);
   }
   100% {
@@ -1850,7 +1836,7 @@ span.visible-out {
     transform: translateY(20px);
   }
   60% {
-    opacity: 1;
+    opacity: 0.3;
     transform: translateY(-5px);
   }
   100% {
@@ -1861,7 +1847,7 @@ span.visible-out {
 .fade-in {
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 2s ease, transform 2.5s ease;
+  transition: opacity 2s ease, transform 2s ease;
 }
 .fade-in.show {
   opacity: 1;
@@ -1925,7 +1911,35 @@ span.visible-out {
 }
 .fade-in2 {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-30px);
+  transition: opacity 1.5s ease, transform 2s ease;
+}
+.fade-in2.show-anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-down2 {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 2s ease-out, transform 3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.fade-down2.show-anim-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-opacity2 {
+  opacity: 0;
+  transition: opacity 2.4s ease-out;
+}
+.fade-opacity2.show-anim-opacity {
+  opacity: 1;
+}
+.fade-opacity3 {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+.fade-opacity3.show-anim-opacity {
+  opacity: 1;
 }
 @property --tw-translate-x {
   syntax: "*";
