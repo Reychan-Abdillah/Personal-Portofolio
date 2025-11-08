@@ -302,7 +302,8 @@ body.loading {
   overflow: hidden;
   height: 100vh;
 }
-.visible1 {
+.visible1 
+{
   animation: fadeInUp 1s forwards ease-out;
 }
 
