@@ -297,7 +297,7 @@ body {
   animation: slideUp 1s ease-in forwards;
 }
 
-/* INI BAGIAN PENTING  */
+
 body.loading {
   overflow: hidden;
   height: 100vh;
