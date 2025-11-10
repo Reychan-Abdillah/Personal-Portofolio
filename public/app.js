@@ -64,6 +64,7 @@ setTimeout(() => {
   h1Name.split("").forEach((char, i) => {
     const span = document.createElement("span");
     span.textContent = char;
+    span.classList.add("opacity-0")
     h1[0].appendChild(span);
     setTimeout(() => {
       span.classList.add("visible1");
@@ -73,6 +74,7 @@ setTimeout(() => {
   h1Span.split("").forEach((char, i) => {
     const span = document.createElement("span");
     span.textContent = char;
+    span.classList.add("opacity-0");
     h1[1].appendChild(span);
     setTimeout(() => {
       setTimeout(() => {
