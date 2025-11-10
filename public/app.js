@@ -12,7 +12,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-
 const loadingScreen = document.getElementById("loading-screen");
 const textLoad = document.getElementById("text-load");
 const letter = textLoad.textContent.split("");

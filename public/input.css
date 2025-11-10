@@ -406,7 +406,7 @@ body.loading {
   animation: grow-width 0.7s forwards ease-out;
 }
 
-/* Teks awal */
+
 .btn-pop span {
   display: inline-block;
   opacity: 0;
